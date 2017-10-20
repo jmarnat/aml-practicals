@@ -21,14 +21,18 @@ def gaussian(x,y,sigma):
     return np.exp(-sigma * n * n)
 
 def poly(x,y,sigma):
-    return 
+    d = np.dot(x,y)
+    #return np.pow(d,2)
+    return (d + 1) * (d + 1)
 
 def kernel(X,function,sigma):
     n = np.size(X,0)
     K = np.zeros([n,n])
+
     for i in range(n):
         for j in range(n):
             K[i,j] = function(X[i,:],X[j,:],sigma)
+    
     # centering K
     Kn = np.ones([n,n])/n
     K = K - Kn * K - K * Kn + Kn * K * Kn
@@ -40,29 +44,19 @@ def kernel(X,function,sigma):
 def k_pca(X,y,function,sigma):
         
     # data normalization
-    # centering
     X_centered = X - np.mean(X)
-    # normalizing 
     X_normalized = X_centered / np.std(X)
+    X_normalized = kernel(X_normalized,function,sigma)
 
-    
-    # should make a infinite symbol
-    X_normalized = kernel(X_normalized,gaussian,15)
-        
-    
     # covariance matrix
     cov = np.cov(X_normalized.T)
     
     # eigen values & vectors
     # which are NOT ALWAYS ordered descreasingly
     eigen_values, eigen_vectors = np.linalg.eig(cov)
-    
-    # indexes of the columns ordered by descresing
     eig_vals_order = np.argsort(eigen_values)[::-1]
-    
     eigen_vectors = eigen_vectors[:,eig_vals_order]
-   
-    
+       
     # PCA in ONE dimension
     X_new = np.dot(X_normalized,eigen_vectors[:,0])
     plt.scatter(x=X_new[y==0],y=np.ones(len(X_new[y==0])),color='blue')
@@ -79,6 +73,7 @@ def k_pca(X,y,function,sigma):
     
     # PCA in THREE dimensions
     X_new = np.dot(X_normalized,eigen_vectors[:,0:3])
+    X_new = X_new.astype('float64')
     fig = plt.figure()
     asub = fig.add_subplot(111,projection='3d')
     ax = X_new[y==0,0]
@@ -90,22 +85,38 @@ def k_pca(X,y,function,sigma):
     asub.scatter(ax,bx,cx,c='blue',marker='o')
     asub.scatter(ay,by,cy,c='red',marker='o')
     plt.show()
-
-
-#
-#
+    
+    return X_normalized
 
 
 
-#X, y = datasets.make_moons(n_samples=100)
-X, y = datasets.make_circles(n_samples=100)
+# =============================================================================
+# k-PCA over MOONS
+# =============================================================================
+
+X, y = datasets.make_moons(n_samples=100)
 
 plt.scatter(X[y==0,0],X[y==0,1],color='red')
 plt.scatter(X[y==1,0],X[y==1,1],color='blue')
 plt.show()
 
-k_pca(X,y,gaussian,15)
+PCs = k_pca(X,y,linear,1)
+PCs = k_pca(X,y,gaussian,15)
 
+
+
+# =============================================================================
+# k-PCA over CIRCLES
+# =============================================================================
+
+X, y = datasets.make_circles(n_samples=100,noise=0.0)
+
+plt.scatter(X[y==0,0],X[y==0,1],color='red')
+plt.scatter(X[y==1,0],X[y==1,1],color='blue')
+plt.show()
+
+PCs = k_pca(X,y,linear,1)
+PCs = k_pca(X,y,gaussian,15)
 
 
 

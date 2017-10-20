@@ -94,14 +94,15 @@ def k_pca(X,y,function,sigma):
 # k-PCA over MOONS
 # =============================================================================
 
-np.random.seed(0)
-X, y = datasets.make_moons(n_samples=500,noise=0.01)
+#np.random.seed(0)
+#X, y = datasets.make_moons(n_samples=500,noise=0.01)
+#
+#plt.scatter(X[y==0,0],X[y==0,1],color='red')
+#plt.scatter(X[y==1,0],X[y==1,1],color='blue')
+#plt.show()
 
-plt.scatter(X[y==0,0],X[y==0,1],color='red')
-plt.scatter(X[y==1,0],X[y==1,1],color='blue')
-plt.show()
-
-PCs = k_pca(X,y,gaussian,10)
+#PCs = k_pca(X,y,gaussian,10)
+#PCs = k_pca(X,y,poly,10)
 
 
 
@@ -110,11 +111,11 @@ PCs = k_pca(X,y,gaussian,10)
 # =============================================================================
 
 np.random.seed(0)
-X, y = datasets.make_circles(n_samples=500,random_state=123124, noise=0.1,factor=0.2)
+X, y = datasets.make_circles(n_samples=500,random_state=123124, noise=0.0,factor=0.2)
 
 plt.scatter(X[y==0,0],X[y==0,1],color='red',alpha=.5)
 plt.scatter(X[y==1,0],X[y==1,1],color='blue',alpha=.5)
 plt.show()
 
 PCs = k_pca(X,y,gaussian,5)
-
+PCs = k_pca(X,y,poly,5)

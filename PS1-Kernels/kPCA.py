@@ -59,15 +59,15 @@ def k_pca(X,y,function,sigma):
        
     # PCA in ONE dimension
     X_new = np.dot(X_normalized,eigen_vectors[:,0])
-    plt.scatter(x=X_new[y==0],y=np.ones(len(X_new[y==0])),color='blue')
-    plt.scatter(x=X_new[y==1],y=np.ones(len(X_new[y==1])),color='red')
+    plt.scatter(x=X_new[y==0],y=np.ones(len(X_new[y==0])),color='blue',alpha=.5)
+    plt.scatter(x=X_new[y==1],y=np.ones(len(X_new[y==1])),color='red',alpha=.5)
     plt.show()
     
     
     # PCA in TWO dimensions
     X_new = np.dot(X_normalized,eigen_vectors[:,0:2])    
-    plt.scatter(x=X_new[y==0,0],y=X_new[y==0,1],color='blue')
-    plt.scatter(x=X_new[y==1,0],y=X_new[y==1,1],color='red')
+    plt.scatter(x=X_new[y==0,0],y=X_new[y==0,1],color='blue',alpha=.5)
+    plt.scatter(x=X_new[y==1,0],y=X_new[y==1,1],color='red',alpha=.5)
     plt.show()
     
     
@@ -82,8 +82,8 @@ def k_pca(X,y,function,sigma):
     ay = X_new[y==1,0]
     by = X_new[y==1,1]
     cy = X_new[y==1,2]
-    asub.scatter(ax,bx,cx,c='blue',marker='o')
-    asub.scatter(ay,by,cy,c='red',marker='o')
+    asub.scatter(ax,bx,cx,c='blue',marker='o',alpha=.5)
+    asub.scatter(ay,by,cy,c='red',marker='o',alpha=.5)
     plt.show()
     
     return X_normalized
@@ -94,14 +94,15 @@ def k_pca(X,y,function,sigma):
 # k-PCA over MOONS
 # =============================================================================
 
-X, y = datasets.make_moons(n_samples=100)
+np.random.seed(0)
+X, y = datasets.make_moons(n_samples=500,noise=0.01)
 
 plt.scatter(X[y==0,0],X[y==0,1],color='red')
 plt.scatter(X[y==1,0],X[y==1,1],color='blue')
 plt.show()
 
-PCs = k_pca(X,y,linear,1)
-PCs = k_pca(X,y,gaussian,15)
+#PCs = k_pca(X,y,linear,1)
+PCs = k_pca(X,y,gaussian,10)
 
 
 
@@ -109,15 +110,15 @@ PCs = k_pca(X,y,gaussian,15)
 # k-PCA over CIRCLES
 # =============================================================================
 
-X, y = datasets.make_circles(n_samples=100,noise=0.0)
-
-plt.scatter(X[y==0,0],X[y==0,1],color='red')
-plt.scatter(X[y==1,0],X[y==1,1],color='blue')
-plt.show()
-
-PCs = k_pca(X,y,linear,1)
-PCs = k_pca(X,y,gaussian,15)
-
-
-
+#np.random.seed(0)
+#X, y = datasets.make_circles(n_samples=500,noise=0.01,factor=0.2)
+#
+#plt.scatter(X[y==0,0],X[y==0,1],color='red',alpha=.5)
+#plt.scatter(X[y==1,0],X[y==1,1],color='blue',alpha=.5)
+#plt.show()
+#
+#PCs = k_pca(X,y,gaussian,2)
+#
+#
+#
 

@@ -11,7 +11,8 @@ from sklearn.datasets import make_moons, make_circles
 import matplotlib.pyplot as plt
 import numpy as np
 
-X,y = make_circles()
+X,y = X, y = make_circles(n_samples=400, factor=.3, noise=.05)
+
 
 plt.title("Original Circles")
 plt.scatter(X[y==0, 0], X[y==0, 1], color='red')
@@ -25,8 +26,8 @@ pca = PCA(n_components=1)
 X_pca = pca.fit_transform(X)
 
 plt.title("PCA, n_components = 1")
-plt.scatter(X_pca[y==0, 0], np.zeros((50,1)), color='red', alpha=0.5)
-plt.scatter(X_pca[y==1, 0], np.zeros((50,1)), color='blue', alpha=0.5)
+plt.scatter(X_pca[y==0, 0], np.ones(len(X_pca[y==0, 0])), color='red', alpha=0.5)
+plt.scatter(X_pca[y==1, 0], np.ones(len(X_pca[y==1, 0])), color='blue', alpha=0.5)
 plt.savefig("results_val/PCA_n=1.jpg")
 plt.show()
 
@@ -35,8 +36,8 @@ scikit_kpca = KernelPCA(n_components=1, kernel='linear')
 X_skernpca = scikit_kpca.fit_transform(X)
 
 plt.title("K-PCA, linear, n_components = 1")
-plt.scatter(X_skernpca[y==0, 0], np.zeros((50,1)), color='red', alpha=0.5)
-plt.scatter(X_skernpca[y==1, 0], np.zeros((50,1)), color='blue', alpha=0.5)
+plt.scatter(X_skernpca[y==0, 0], np.ones(len(X_skernpca[y==0, 0])), color='red', alpha=0.5)
+plt.scatter(X_skernpca[y==1, 0], np.ones(len(X_skernpca[y==1, 0])), color='blue', alpha=0.5)
 plt.savefig("results_val/K-PCA_linear_n=1.jpg")
 plt.show()
 
@@ -46,8 +47,8 @@ for i in range(20) :
     X_skernpca = scikit_kpca.fit_transform(X)
     
     plt.title("K-PCA, poly, degree="+str(i)+", n_components = 1")
-    plt.scatter(X_skernpca[y==0, 0], np.zeros((50,1)), color='red', alpha=0.5)
-    plt.scatter(X_skernpca[y==1, 0], np.zeros((50,1)), color='blue', alpha=0.5)
+    plt.scatter(X_skernpca[y==0, 0], np.ones(len(X_skernpca[y==0, 0])), color='red', alpha=0.5)
+    plt.scatter(X_skernpca[y==1, 0], np.ones(len(X_skernpca[y==1, 0])), color='blue', alpha=0.5)
     plt.savefig("results_val/poly1/"+str(i)+".jpg")
     plt.show()
 
@@ -56,8 +57,8 @@ scikit_kpca = KernelPCA(n_components=1, kernel='sigmoid')
 X_skernpca = scikit_kpca.fit_transform(X)
 
 plt.title("K-PCA, sigmoid, n_components = 1")
-plt.scatter(X_skernpca[y==0, 0], np.zeros((50,1)), color='red', alpha=0.5)
-plt.scatter(X_skernpca[y==1, 0], np.zeros((50,1)), color='blue', alpha=0.5)
+plt.scatter(X_skernpca[y==0, 0], np.ones(len(X_skernpca[y==0, 0])), color='red', alpha=0.5)
+plt.scatter(X_skernpca[y==1, 0], np.ones(len(X_skernpca[y==1, 0])), color='blue', alpha=0.5)
 plt.savefig("results_val/K-PCA_sigmoid_n=1.jpg")
 plt.show()
 
@@ -66,8 +67,8 @@ scikit_kpca = KernelPCA(n_components=1, kernel='cosine')
 X_skernpca = scikit_kpca.fit_transform(X)
 
 plt.title("K-PCA, cosine, n_components = 1")
-plt.scatter(X_skernpca[y==0, 0], np.zeros((50,1)), color='red', alpha=0.5)
-plt.scatter(X_skernpca[y==1, 0], np.zeros((50,1)), color='blue', alpha=0.5)
+plt.scatter(X_skernpca[y==0, 0], np.ones(len(X_skernpca[y==0, 0])), color='red', alpha=0.5)
+plt.scatter(X_skernpca[y==1, 0], np.ones(len(X_skernpca[y==1, 0])), color='blue', alpha=0.5)
 plt.savefig("results_val/K-PCA_cosine_n=1.jpg")
 plt.show()
 
@@ -77,8 +78,8 @@ for i in range(20) :
     X_skernpca = scikit_kpca.fit_transform(X)
     
     plt.title("K-PCA, rbf, gamma="+str(i)+", n_components = 1")
-    plt.scatter(X_skernpca[y==0, 0], np.zeros((50,1)), color='red', alpha=0.5)
-    plt.scatter(X_skernpca[y==1, 0], np.zeros((50,1)), color='blue', alpha=0.5)
+    plt.scatter(X_skernpca[y==0, 0], np.ones(len(X_skernpca[y==0, 0])), color='red', alpha=0.5)
+    plt.scatter(X_skernpca[y==1, 0], np.ones(len(X_skernpca[y==1, 0])), color='blue', alpha=0.5)
     plt.savefig("results_val/rbf/K-PCA_rbf="+str(i)+".jpg")
     plt.show()
 
@@ -89,8 +90,8 @@ for i in range(30) :
     X_skernpca = scikit_kpca.fit_transform(X)
     
     plt.title("K-PCA, laplacian, gamma="+str(i)+", n_components = 1")
-    plt.scatter(X_skernpca[y==0, 0], np.zeros((50,1)), color='red', alpha=0.5)
-    plt.scatter(X_skernpca[y==1, 0], np.zeros((50,1)), color='blue', alpha=0.5)
+    plt.scatter(X_skernpca[y==0, 0], np.ones(len(X_skernpca[y==0, 0])), color='red', alpha=0.5)
+    plt.scatter(X_skernpca[y==1, 0], np.ones(len(X_skernpca[y==1, 0])), color='blue', alpha=0.5)
     plt.savefig("results_val/laplacian/"+str(i)+".jpg")
     plt.show()
 

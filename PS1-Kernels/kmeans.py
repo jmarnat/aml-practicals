@@ -51,6 +51,12 @@ def kmeans_fit(X,centroids):
         
     return y
 
+
+
+# =============================================================================
+# test on IRIS
+# =============================================================================
+
 iris = datasets.load_iris()
 X = iris.data[:,[0,1,2]]
 y = iris.target
@@ -66,9 +72,6 @@ plt.scatter(X[:,0],X[:,1],c=y_c)
 plt.title('iris CLUSTERIZED')
 plt.show()
 
-
-
-
 fig = plt.figure()
 asub = fig.add_subplot(111,projection='3d')
 asub.scatter(X[:,0],X[:,1],X[:,2],c=y,marker='o',alpha=.9)
@@ -80,6 +83,29 @@ asub = fig.add_subplot(111,projection='3d')
 asub.scatter(X[:,0],X[:,1],X[:,2],c=y_c,marker='o',alpha=.9)
 asub.set_title('iris k-means clusters')
 plt.show()
+
+
+
+# =============================================================================
+# test on circles
+# =============================================================================
+
+X, y = datasets.make_circles(n_samples=500, noise=0.01)
+plt.scatter(X[:,0],X[:,1],c=y,alpha=.5)
+plt.title("circles original")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -17,7 +17,7 @@ def linear(x,y,sigma):
 # gaussian rbf kernel
 def gaussian(x,y,sigma):
     n = np.linalg.norm(x-y)
-    #return np.exp(- (n * n) / sigma)
+    # return np.exp(- (n * n) / (2 * sigma * sigma))
     return np.exp(-sigma * n * n)
 
 def poly(x,y,sigma):
@@ -46,10 +46,10 @@ def k_pca(X,y,function,sigma):
     # data normalization
     X_centered = X - np.mean(X)
     X_normalized = X_centered / np.std(X)
-    X_normalized = kernel(X_normalized,function,sigma)
+    K = kernel(X_normalized,function,sigma)
 
     # covariance matrix
-    cov = np.cov(X_normalized.T)
+    cov = np.cov(K.T)
     
     # eigen values & vectors
     # which are NOT ALWAYS ordered descreasingly
@@ -58,21 +58,21 @@ def k_pca(X,y,function,sigma):
     eigen_vectors = eigen_vectors[:,eig_vals_order]
        
     # PCA in ONE dimension
-    X_new = np.dot(X_normalized,eigen_vectors[:,0])
+    X_new = np.dot(K,eigen_vectors[:,0])
     plt.scatter(x=X_new[y==0],y=np.ones(len(X_new[y==0])),color='blue',alpha=.5)
     plt.scatter(x=X_new[y==1],y=np.ones(len(X_new[y==1])),color='red',alpha=.5)
     plt.show()
     
     
     # PCA in TWO dimensions
-    X_new = np.dot(X_normalized,eigen_vectors[:,0:2])    
+    X_new = np.dot(K,eigen_vectors[:,0:2])    
     plt.scatter(x=X_new[y==0,0],y=X_new[y==0,1],color='blue',alpha=.5)
     plt.scatter(x=X_new[y==1,0],y=X_new[y==1,1],color='red',alpha=.5)
     plt.show()
     
     
     # PCA in THREE dimensions
-    X_new = np.dot(X_normalized,eigen_vectors[:,0:3])
+    X_new = np.dot(K,eigen_vectors[:,0:3])
     X_new = X_new.astype('float64')
     fig = plt.figure()
     asub = fig.add_subplot(111,projection='3d')
@@ -86,7 +86,7 @@ def k_pca(X,y,function,sigma):
     asub.scatter(ay,by,cy,c='red',marker='o',alpha=.5)
     plt.show()
     
-    return X_normalized
+    return K
 
 
 
@@ -94,15 +94,15 @@ def k_pca(X,y,function,sigma):
 # k-PCA over MOONS
 # =============================================================================
 
-#np.random.seed(0)
-#X, y = datasets.make_moons(n_samples=500,noise=0.01)
-#
-#plt.scatter(X[y==0,0],X[y==0,1],color='red')
-#plt.scatter(X[y==1,0],X[y==1,1],color='blue')
-#plt.show()
+np.random.seed(0)
+X, y = datasets.make_moons(n_samples=500,noise=0.01)
 
-#PCs = k_pca(X,y,gaussian,10)
-#PCs = k_pca(X,y,poly,10)
+plt.scatter(X[y==0,0],X[y==0,1],color='red')
+plt.scatter(X[y==1,0],X[y==1,1],color='blue')
+plt.show()
+
+PCs = k_pca(X,y,gaussian,10)
+PCs = k_pca(X,y,poly,10)
 
 
 

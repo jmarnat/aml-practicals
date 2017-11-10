@@ -1,6 +1,18 @@
-param X{1..50, 1..4};
-param Y{1..50};
 
+reset;
+option solver "ampl/loqo";
+
+
+
+# variables
+var r >= 0;
+param dim;
+var C {1..dim};
+param n_feat;
+param X{1..50, 1..4};
+
+
+# loading iris data (1st class only)
 data;
 param X : 1 2 3 4 :=
 1 5.1 3.5 1.4 0.2
@@ -54,57 +66,15 @@ param X : 1 2 3 4 :=
 49 5.3 3.7 1.5 0.2
 50 5.0 3.3 1.4 0.2
 ;
-param Y : 1 :=
-1 0
-2 0
-3 0
-4 0
-5 0
-6 0
-7 0
-8 0
-9 0
-10 0
-11 0
-12 0
-13 0
-14 0
-15 0
-16 0
-17 0
-18 0
-19 0
-20 0
-21 0
-22 0
-23 0
-24 0
-25 0
-26 0
-27 0
-28 0
-29 0
-30 0
-31 0
-32 0
-33 0
-34 0
-35 0
-36 0
-37 0
-38 0
-39 0
-40 0
-41 0
-42 0
-43 0
-44 0
-45 0
-46 0
-47 0
-48 0
-49 0
-50 0
-;
-param dim = 4
-param n_feat = 50
+
+param dim := 4;
+param n_feat := 50;
+
+
+minimize ball: r;
+subject to c1 {i in 1..n_feat}: (sum{d in 1..dim} ((X[i,d] - C[d]) ^ 2)) <= (r * r);
+
+
+solve;
+display C;
+display r;

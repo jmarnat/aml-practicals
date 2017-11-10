@@ -1,5 +1,7 @@
 param X{1..50, 1..4};
 param Y{1..50};
+param dim;
+param n_feat;
 
 data;
 param X : 1 2 3 4 :=
@@ -54,7 +56,7 @@ param X : 1 2 3 4 :=
 49 5.3 3.7 1.5 0.2
 50 5.0 3.3 1.4 0.2
 ;
-param Y : 1 :=
+param Y :=
 1 0
 2 0
 3 0
@@ -106,5 +108,6 @@ param Y : 1 :=
 49 0
 50 0
 ;
-param dim = 4
-param n_feat = 50
+
+param dim = 4;
+param n_feat = 50;

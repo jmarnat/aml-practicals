@@ -1,0 +1,10 @@
+ampl: model ../simple_ball.mod;
+LOQO 7.03: optimal solution (34 iterations, 34 evaluations)
+primal objective 1.414213574
+  dual objective 1.414213509
+C [*] :=
+1  0.999815
+2  0.999815
+;
+
+r = 1.41421

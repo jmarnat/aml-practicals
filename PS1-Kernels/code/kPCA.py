@@ -3,7 +3,7 @@
 """
 Created on Tue Oct 10 15:59:13 2017
 
-@author: jmarnat
+@author: V. Benozillo & J.MARNAT
 """
 from mpl_toolkits.mplot3d import Axes3D
 from sklearn import datasets

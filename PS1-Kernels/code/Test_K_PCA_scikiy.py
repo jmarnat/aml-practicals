@@ -3,7 +3,7 @@
 """
 Created on Tue Oct 10 14:08:29 2017
 
-@author: koolok
+@author: V. Benozillo & J.MARNAT
 """
 
 from sklearn.decomposition import PCA, KernelPCA

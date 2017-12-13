@@ -3,7 +3,7 @@
 """
 Created on Tue Oct 10 14:09:13 2017
 
-@author: jmarnat
+@author: V. Benozillo & J.MARNAT
 """
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np

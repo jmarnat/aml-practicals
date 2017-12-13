@@ -3,7 +3,7 @@
 """
 Created on Wed Nov  8 12:19:15 2017
 
-@author: koolok
+@author: V. Benozillo & J.MARNAT
 """
 
 from mpl_toolkits.mplot3d import Axes3D

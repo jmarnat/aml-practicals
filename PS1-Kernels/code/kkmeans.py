@@ -3,9 +3,7 @@
 """
 Created on Fri Oct 20 13:39:55 2017
 
-KMeans implementation
-
-@author: jmarnat
+@author: V. Benozillo & J.MARNAT
 """
 
 from sklearn import datasets

@@ -102,16 +102,18 @@ def ucb(rewards, eps, steps, trials, explore, error_graph=False, verbose=True):
 
 
 n=1
-ucb(rewards = [0.2,0.3,0.8], eps = 0.1, steps =  100, trials =  20, explore = 10, error_graph=True, verbose=False)
-ucb(rewards = [0.2,0.3,0.8], eps = 0.1, steps =  100, trials = 100, explore = 10, error_graph=True, verbose=False)
-ucb(rewards = [0.2,0.3,0.8], eps = 0.1, steps = 2000, trials =  20, explore = 10, error_graph=True, verbose=False)
-ucb(rewards = [0.2,0.3,0.8], eps = 0.1, steps = 2000, trials = 100, explore = 10, error_graph=True, verbose=False)
+rewards = [0.2,0.3,0.8]
+ucb(rewards, eps = 0.1, steps =  100, trials =  20, explore = 10, error_graph=True, verbose=False)
+ucb(rewards, eps = 0.1, steps =  100, trials = 100, explore = 10, error_graph=True, verbose=False)
+ucb(rewards, eps = 0.1, steps = 2000, trials =  20, explore = 10, error_graph=True, verbose=False)
+ucb(rewards, eps = 0.1, steps = 2000, trials = 100, explore = 10, error_graph=True, verbose=False)
 
 
 n=2
-ucb([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps= 100, trials= 20, explore=1, error_graph=True, verbose=False)
-ucb([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps= 100, trials=100, explore=1, error_graph=True, verbose=False)
-ucb([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps=2000, trials= 20, explore=1, error_graph=True, verbose=False)
-ucb([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps=2000, trials=100, explore=1, error_graph=True, verbose=False)
+rewards = [0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9]
+ucb(rewards, eps=0.1, steps= 100, trials= 20, explore=1, error_graph=True, verbose=False)
+ucb(rewards, eps=0.1, steps= 100, trials=100, explore=1, error_graph=True, verbose=False)
+ucb(rewards, eps=0.1, steps=2000, trials= 20, explore=1, error_graph=True, verbose=False)
+ucb(rewards, eps=0.1, steps=2000, trials=100, explore=1, error_graph=True, verbose=False)
 
 

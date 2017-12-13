@@ -77,15 +77,16 @@ def incremental(rewards, steps, trials, error_graph, verbose):
     return(best_arm)
 
 n = 1
-incremental(rewards = [0.2,0.3,0.8], steps =  100, trials =  20, error_graph=True, verbose=False)
-incremental(rewards = [0.2,0.3,0.8], steps =  100, trials = 100, error_graph=True, verbose=False)
-incremental(rewards = [0.2,0.3,0.8], steps = 2000, trials =  20, error_graph=True, verbose=False)
-incremental(rewards = [0.2,0.3,0.8], steps = 2000, trials = 100, error_graph=True, verbose=False)
+rewards = [0.2,0.3,0.8]
+incremental(rewards, steps =  100, trials =  20, error_graph=True, verbose=False)
+incremental(rewards, steps =  100, trials = 100, error_graph=True, verbose=False)
+incremental(rewards, steps = 2000, trials =  20, error_graph=True, verbose=False)
+incremental(rewards, steps = 2000, trials = 100, error_graph=True, verbose=False)
 
 n = 2
-incremental([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], steps= 100, trials= 20, error_graph=True, verbose=False)
-incremental([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], steps= 100, trials=100, error_graph=True, verbose=False)
-incremental([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], steps=2000, trials= 20, error_graph=True, verbose=False)
-incremental([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], steps=2000, trials=100, error_graph=True, verbose=False)
-
+rewards = [0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9]
+incremental(rewards, steps= 100, trials= 20, error_graph=True, verbose=False)
+incremental(rewards, steps= 100, trials=100, error_graph=True, verbose=False)
+incremental(rewards, steps=2000, trials= 20, error_graph=True, verbose=False)
+incremental(rewards, steps=2000, trials=100, error_graph=True, verbose=False)
 

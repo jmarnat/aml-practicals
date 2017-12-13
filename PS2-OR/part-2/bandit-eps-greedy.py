@@ -88,16 +88,18 @@ def eps_greedy(rewards, eps, steps, trials, error_graph=False, verbose=False):
     return(best_arm)
 
 n=1
-eps_greedy(rewards = [0.2,0.3,0.8], eps = 0.1, steps =  100, trials =  20, error_graph=True)
-eps_greedy(rewards = [0.2,0.3,0.8], eps = 0.1, steps =  100, trials = 100, error_graph=True)
-eps_greedy(rewards = [0.2,0.3,0.8], eps = 0.1, steps = 2000, trials =  20, error_graph=True)
-eps_greedy(rewards = [0.2,0.3,0.8], eps = 0.1, steps = 2000, trials = 100, error_graph=True)
+rewards = [0.2,0.3,0.8]
+eps_greedy(rewards, eps = 0.1, steps =  100, trials =  20, error_graph=True)
+eps_greedy(rewards, eps = 0.1, steps =  100, trials = 100, error_graph=True)
+eps_greedy(rewards, eps = 0.1, steps = 2000, trials =  20, error_graph=True)
+eps_greedy(rewards, eps = 0.1, steps = 2000, trials = 100, error_graph=True)
 
 
 n=2
-eps_greedy([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps= 100, trials= 20, error_graph=True, verbose=False)
-eps_greedy([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps= 100, trials=100, error_graph=True, verbose=False)
-eps_greedy([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps=2000, trials= 20, error_graph=True, verbose=False)
-eps_greedy([0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9], eps=0.1, steps=2000, trials=100, error_graph=True, verbose=False)
+rewards = [0.1,0.1,0.1,0.2,0.4,0.6,0.7,0.8,0.8,0.9]
+eps_greedy(rewards, eps=0.1, steps= 100, trials= 20, error_graph=True, verbose=False)
+eps_greedy(rewards, eps=0.1, steps= 100, trials=100, error_graph=True, verbose=False)
+eps_greedy(rewards, eps=0.1, steps=2000, trials= 20, error_graph=True, verbose=False)
+eps_greedy(rewards, eps=0.1, steps=2000, trials=100, error_graph=True, verbose=False)
 
 

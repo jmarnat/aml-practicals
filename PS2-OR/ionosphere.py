@@ -16,6 +16,9 @@ from sklearn import svm
 
 iono_data = pd.read_csv("ionosphere.data",header=None)
 
+# replaginc 'g' and 'b' by -1 et 1
+iono_data[34].replace(['g','b'],[-1,1],inplace=True)
+
 target = iono_data[34]
 data = iono_data.loc[:, 0:33]
 

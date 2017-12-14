@@ -30,6 +30,10 @@ Accuracy4 = []
 for n in range(100) : 
     data_train,data_test,target_train,target_test=train_test_split(data,target,test_size=0.1,random_state=random.seed())
     
+    # Noise
+    for i in range(50,300,50) :
+        target_train.values[i] = target_train.values[i] * -1
+        
     # Anti SVM bug
     if (target_train.values[0]==target_train.values[1]) :
         i = 2
@@ -39,6 +43,8 @@ for n in range(100) :
         sv = target_train.values[1]
         target_train.values[1] = target_train.values[i]
         target_train.values[i] = sv
+    
+    
     
     #==============================================================================
     # classic update on ionosphere
@@ -143,7 +149,8 @@ for n in range(100) :
     Accuracy4.append(accuracy)
     
     
-    
+Accuracy = []
+
 accuracy = []
 for i in range(len(Accuracy1[0])) :
     moy = 0
@@ -157,6 +164,7 @@ plt.plot(accuracy)
 plt.ylabel('Accuracy')
 plt.xlabel('Nb Examples')
 plt.show()
+Accuracy.append(accuracy)
     
 accuracy = []
 for i in range(len(Accuracy2[0])) :
@@ -171,6 +179,8 @@ plt.plot(accuracy)
 plt.ylabel('Accuracy')
 plt.xlabel('Nb Examples')
 plt.show()  
+Accuracy.append(accuracy)
+
     
 accuracy = []
 for i in range(len(Accuracy3[0])) :
@@ -185,6 +195,16 @@ plt.plot(accuracy)
 plt.ylabel('Accuracy')
 plt.xlabel('Nb Examples')
 plt.show()
+Accuracy.append(accuracy)
+
+
+plt.plot(Accuracy[0], "r")
+plt.plot(Accuracy[1], "g")
+plt.plot(Accuracy[2], "b")
+plt.ylabel('Accuracy')
+plt.xlabel('Nb Examples')
+plt.show()
+
     
 accuracy = []
 for i in range(len(Accuracy4[0])) :
@@ -198,7 +218,7 @@ for i in range(len(Accuracy4[0])) :
 plt.plot(accuracy)
 plt.ylabel('Accuracy')
 plt.xlabel('Nb Examples')
-plt.show()   
+plt.show()
     
     
     
